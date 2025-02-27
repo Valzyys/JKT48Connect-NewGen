@@ -45,7 +45,7 @@ async function fetchLiveStreams() {
       const bgColor = isShowroom ? "bg-pink-100" : "bg-yellow-100";
       const tagColor = isShowroom ? "bg-pink-500" : "bg-black";
       const streamPlatform = isShowroom ? "SHOWROOM" : "IDN Live";
-      const streamURL = `https://www.jkt48connect.my.id/live?name=${encodeURIComponent(stream.name)}`;
+      const streamURL = `https://www.jkt48connect.web.id/live?name=${encodeURIComponent(stream.name)}`;
       
       // Konversi waktu ke WIB
       const startDate = new Date(stream.started_at);
