@@ -75,4 +75,31 @@
         }
 
         fetchMemberData();
-    
+    // Fungsi Toggle Navbar
+    function toggleNavbar() {
+        const menu = document.getElementById("navbar-menu");
+        const links = menu.querySelectorAll("a");
+
+        if (menu.classList.contains("hidden")) {
+            menu.classList.remove("hidden");
+            setTimeout(() => {
+                menu.classList.remove("opacity-0", "scale-y-0");
+            }, 10);
+
+            links.forEach((link, index) => {
+                setTimeout(() => {
+                    link.classList.remove("opacity-0", "translate-y-3");
+                }, index * 100);
+            });
+
+        } else {
+            menu.classList.add("opacity-0", "scale-y-0");
+            links.forEach((link) => {
+                link.classList.add("opacity-0", "translate-y-3");
+            });
+
+            setTimeout(() => {
+                menu.classList.add("hidden");
+            }, 300);
+        }
+    }
