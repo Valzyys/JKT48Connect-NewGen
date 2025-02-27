@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JKT48 Replay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+  
+  <!-- Navbar -->
+  <header class="w-full bg-white shadow-md fixed top-0 left-0 right-0 z-50 p-4">
+    <div class="flex justify-between items-center max-w-5xl mx-auto">
+      <div class="text-2xl font-bold cursor-pointer" onclick="toggleNavbar()">JKT48Connect</div>
+      <div class="text-xl cursor-pointer" onclick="toggleNavbar()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+        <!-- Menu Navbar (Hidden by Default) -->
+        <nav id="navbar-menu" class="mt-2  p-4 hidden opacity-0 transform scale-y-0 origin-top transition-all duration-300">
+          <a href="/" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-100 hover:text-blue-600 hover:underline">Home</a>
+          <a href="/news" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-200 hover:text-blue-600 hover:underline">News</a>
+          <a href="/schedule" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-300 hover:text-blue-600 hover:underline">Schedules</a>
+          <a href="/live" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-400 hover:text-blue-600 hover:underline">Stream</a>
+        </nav>
+  </header>
+  
+  <!-- Spacer untuk Navbar -->
+  <div class="h-16"></div>
+  
+  <!-- Container -->
+  <div class="max-w-2xl mx-auto p-4">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-bold">
+        <span class="bg-gradient-to-r from-blue-600 to-black text-transparent bg-clip-text">JKT48 Replay.
+      </h1>
+      <button class="bg-pink-500 text-white px-4 py-2 rounded-full flex items-center">
+     <a href="/live"
+       <i class="fas fa-play mr-2"></i> Live
+       </a>
+      </button>
+    </div>
+    
+    <!-- Tombol Filter -->
+    <div class="flex justify-start mb-4">
+      <div class="bg-white rounded-full shadow-md p-1 inline-flex space-x-2">
+        <button id="btn-showroom" class="bg-pink-200 text-pink-600 px-4 py-2 rounded-full" onclick="toggleCategory('showroom')">Showroom/IDN</button>
+        <button id="btn-theater" class="bg-white text-gray-600 px-4 py-2 rounded-full" onclick="toggleCategory('theater')">Theater</button>
+      </div>
+    </div>
+    
+    <!-- Container Replay -->
+    <div id="content-showroom" class="space-y-4">
+      <p class="text-center text-gray-500">Loading...</p>
+    </div>
+    
+    <div id="content-theater" class="space-y-4 hidden">
+      <p class="text-center text-gray-500">Loading...</p>
+    </div>
+  </div>
+  
+  <!-- Script untuk Fetch YouTube API -->
+<script src="script/replay.js">script/replay.js</script>
+  
+</body>
+
+</html>

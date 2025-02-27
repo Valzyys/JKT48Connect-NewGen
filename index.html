@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot News</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tambahkan rasio aspek 16:9 secara manual jika Tailwind tidak mendukung */
+        .aspect-16-9 {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        .aspect-16-9 img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+            border-radius: 20px; /* Agar lebih estetik */
+        }
+    </style>
+</head>
+<body class="bg-white font-roboto p-4 flex flex-col items-center">
+
+    <!-- Navbar -->
+    <header class="w-full bg-white fixed top-0 left-0 right-0 z-50 p-4 shadow-md">
+        <div class="flex justify-between items-center max-w-5xl mx-auto">
+            <div class="text-2xl font-bold cursor-pointer" onclick="toggleNavbar()">JKT48Connect</div>
+            <div class="text-xl cursor-pointer" onclick="toggleNavbar()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        
+        
+        <!-- Menu Navbar (Hidden by Default) -->
+        <nav id="navbar-menu" class="mt-2  p-4 hidden opacity-0 transform scale-y-0 origin-top transition-all duration-300">
+            <a href="/" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-100 hover:text-blue-600 hover:underline">Home</a>
+            <a href="/news" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-200 hover:text-blue-600 hover:underline">News</a>
+            <a href="/schedule" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-300 hover:text-blue-600 hover:underline">Schedules</a>
+            <a href="/live" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-400 hover:text-blue-600 hover:underline">Stream</a>
+        </nav>
+    </header>
+
+    <!-- Spacer untuk navbar agar konten tidak tertutup -->
+    <div class="h-16"></div>
+
+    <!-- Slider -->
+    <div class="w-full max-w-5xl overflow-hidden rounded-[20px] relative">
+        <img id="slider-image" class="w-full h-52 md:h-80 object-cover" src="" alt="JKT48 Banner">
+    </div>
+
+    <!-- Apa Itu Theater -->
+    <div class="bg-white shadow-lg rounded-[20px] p-6 max-w-5xl w-full mt-6">
+        <h2 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-black text-transparent bg-clip-text">
+            JKT48Connect introduces you to the
+        </h2>
+        <p class="text-lg text-gray-800 font-semibold">world of JKT48 more closely.</p>
+
+        <div class="flex gap-4 mt-4">
+            <img class="w-40 h-24 object-cover rounded-lg" src="https://files.catbox.moe/4av2h5.jpg" alt="JKT48 Theater sign">
+            <img class="w-40 h-24 object-cover rounded-lg" src="https://files.catbox.moe/g567li.jpg" alt="Interior of JKT48 Theater">
+        </div>
+
+        <h3 class="text-xl font-bold mt-4 bg-gradient-to-r from-blue-600 to-black text-transparent bg-clip-text">
+            Apa itu JKT48 Theater?
+        </h3>
+        <p class="text-gray-700 text-sm font-semibold">
+            Teater JKT48 adalah sebuah teater eksklusif untuk pertunjukan grup idola Indonesia JKT48 dan grup-grup saudarinya dari AKB48 Group. 
+            Teater ini berada di lantai 4 fX Sudirman, Jakarta Pusat.
+        </p>
+    </div>
+
+    <!-- Hot News -->
+    <div class="max-w-5xl w-full mt-10">
+        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-black text-transparent bg-clip-text">Hot News</h1>
+        <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <p class="text-gray-500">Memuat berita...</p>
+        </div>
+    </div>
+
+    <!-- Upcoming Birthdays -->
+    <div class="bg-yellow-100 p-6 rounded-xl shadow-lg max-w-5xl w-full mt-10">
+        <div class="flex justify-between items-center">
+            <h2 class="text-xl font-bold text-gray-800">Upcoming Birthdays</h2>
+            <span id="total-members" class="text-sm text-gray-600">0 Members</span>
+        </div>
+        <div id="birthday-cards" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+            <p class="text-gray-500">Memuat data...</p>
+        </div>
+    </div>
+
+    <!-- Theater Upcoming -->
+    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-black text-transparent bg-clip-text mt-10">Theater Upcoming</h1>
+    <div id="theater-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-4 w-full max-w-5xl">
+        <p class="text-gray-500">Loading...</p>
+    </div>
+
+<!-- JKT48 Youtube -->
+<div class="w-full max-w-5xl mx-auto p-4">
+    <h1 class="text-3xl font-bold text-center bg-gradient-to-r from-blue-600 to-black text-transparent bg-clip-text mt-10">
+        JKT48 YouTube
+    </h1>
+    <div id="videos-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-4 w-full max-w-5xl">
+        <p class="text-gray-500">Loading...</p>
+    </div>
+</div>
+
+
+    <script>
+        function toggleNavbar() {
+            const menu = document.getElementById("navbar-menu");
+            const links = menu.querySelectorAll("a");
+
+            if (menu.classList.contains("hidden")) {
+                menu.classList.remove("hidden");
+                setTimeout(() => {
+                    menu.classList.remove("opacity-0", "scale-y-0");
+                }, 10);
+
+                links.forEach((link, index) => {
+                    setTimeout(() => {
+                        link.classList.remove("opacity-0", "translate-y-3");
+                    }, index * 100);
+                });
+
+            } else {
+                menu.classList.add("opacity-0", "scale-y-0");
+                links.forEach((link) => {
+                    link.classList.add("opacity-0", "translate-y-3");
+                });
+
+                setTimeout(() => {
+                    menu.classList.add("hidden");
+                }, 300);
+            }
+        }
+    </script>
+
+    <script src="script/home-news.js"></script>
+    <script src="script/home-ultah.js"></script>
+    <script src="script/theater.js"></script>
+    <script src="script/slider.js"></script>
+    <script src="script/youtube.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <header class="w-full bg-white shadow-md fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="flex justify-between items-center max-w-5xl mx-auto">
+            <div class="text-2xl font-bold cursor-pointer" onclick="toggleNavbar()">JKT48Connect</div>
+            <div class="text-xl cursor-pointer" onclick="toggleNavbar()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        
+        <!-- Menu Navbar (Hidden by Default) -->
+        <nav id="navbar-menu" class="mt-2  p-4 hidden opacity-0 transform scale-y-0 origin-top transition-all duration-300">
+          <a href="/" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-100 hover:text-blue-600 hover:underline">Home</a>
+          <a href="/news" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-200 hover:text-blue-600 hover:underline">News</a>
+          <a href="/schedule" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-300 hover:text-blue-600 hover:underline">Schedules</a>
+          <a href="/live" class="block py-2 text-gray-800 opacity-0 transform translate-y-3 transition-all duration-300 delay-400 hover:text-blue-600 hover:underline">Stream</a>
+        </nav>
+    </header>
+
+    <!-- Spacer untuk Navbar -->
+    <div class="h-16"></div>
+
+    <div class="max-w-xl mx-auto p-4">
+        <!-- Breadcrumb -->
+        <nav class="text-gray-500 text-sm mb-4">
+            <a href="home.html" class="hover:underline">Home</a> >
+            <a href="member.html" class="hover:underline">Member</a> >
+            <span id="profile-name" class="text-gray-700 font-semibold">Loading...</span>
+        </nav>
+
+        <!-- Profile Card -->
+        <div id="profile-card" class="bg-white rounded-[20px] shadow-lg overflow-hidden hidden">
+            <div id="profile-banner" class="relative w-full h-28 bg-cover bg-center rounded-b-[20px]"></div>
+            <div class="p-6">
+                <div class="text-center">
+                    <img id="profile-img" alt="Profile Image" class="w-auto h-auto object-cover mx-auto border-4 border-gray-300 rounded-lg">
+                    <h2 id="profile-name" class="text-2xl font-semibold mt-3 text-left"></h2>
+                    <p id="profile-nickname" class="text-blue-500 text-lg text-left"></p>
+                </div>
+                <div id="member-info" class="mt-6 space-y-2"></div>
+                <div id="profile-motto" class="mt-4 p-4 bg-blue-50 rounded-lg text-gray-700 italic text-center"></div>
+                <div class="mt-6 flex justify-around">
+                    <div id="followers" class="text-center bg-pink-100 text-black px-8 py-5 rounded-lg">
+                        <p class="font-semibold"><i class="fas fa-heart"></i> Showroom</p>
+                        <p id="followers-count" class="text-2xl font-semibold"></p>
+                    </div>
+                    <div id="room-level" class="text-center bg-blue-100 text-black px-8 py-5 rounded-lg">
+                        <p class="font-semibold"><i class="fas fa-star"></i> IDN</p>
+                        <p id="room-level-count" class="text-2xl font-semibold"></p>
+                    </div>
+                </div>
+                <div id="introduction-video" class="mt-6"></div>
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error-message" class="hidden text-center text-red-500 font-semibold text-lg mt-6">
+            Member tidak ditemukan. Silakan masukkan nama member yang valid di URL.
+        </div>
+    </div>
+
+<script src="script/profile.js">script/profile.js</script>
+</body>
+</html>
